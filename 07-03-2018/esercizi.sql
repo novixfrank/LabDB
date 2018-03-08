@@ -24,9 +24,42 @@ WHERE I.Stipendio<=3000
 --funzione genera_mail
 CREATE OR REPLACE FUNCTION genera_mail (id NUMBER) RETURN VARCHAR2
     AS
-        nome impiegato.nome%TYPE := NULL;
-        cognome impiegato.cognome%TYPE  := NULL;
+       nome impiegato.nome%TYPE := NULL;
+       cognome impiegato.cognome%TYPE  := NULL;
     BEGIN
-        SELECT SUBSTR(nome, 1,1), cognome INTO nome,cognome FROM Impiegato WHERE Cod=id;
-        RETURN nome||cognome||'@lazienda.it';
+       SELECT nome, cognome INTO nome, cognome FROM Impiegato WHERE Cod = id;
+       RETURN LOWER(SUBSTR(nome, 1, 1) || cognome || '@lazienda.it');
     END;
+
+--cursore genera_mail
+DECLARE
+    CURSOR impiegati IS SELECT Cod FROM impiegato WHERE stipendio > 3000;
+
+BEGIN
+    FOR impiegato IN impiegati LOOP
+        DBMS_OUTPUT.PUT_LINE(genera_mail(impiegato.Cod));
+    END LOOP;
+END;
+
+--DA CONTROLLARE
+SET SERVEROUTPUT ON;
+
+CREATE GLOBAL TEMPORARY TABLE imp_mail(
+    CodImpiegato NUMBER(5),
+    mail VARCHAR2(128)
+) ON COMMIT PRESERVE ROWS;
+
+DECLARE
+    CURSOR impiegati IS SELECT Cod FROM impiegato WHERE stipendio > 3000;
+    TYPE imp_mail IS RECORD (
+        CodImpiegato NUMBER(5),
+        Mail VARCHAR2(128)
+    );
+
+BEGIN
+    FOR impiegato IN impiegati LOOP
+        DBMS_OUTPUT.PUT_LINE(genera_mail(impiegato.Cod));
+        --INSERT INTO imp_mail(CodImpiegato, Mail) VALUES (impiegato.Cod, genera_mail(impiegato.Cod));
+    END LOOP;
+    --SELECT * FROM imp_mail;
+END;
