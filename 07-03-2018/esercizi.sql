@@ -19,7 +19,7 @@ INSERT INTO Impiegato(Cod, Nome, Cognome, Data_Assunto, Stipendio, Capo) VALUES 
 INSERT INTO Impiegato(Cod, Nome, Cognome, Data_Assunto, Stipendio, Capo) VALUES (3, 'Andrea', 'Verdi', TO_DATE('03/06/2011', 'DD/MM/YYYY'), 5000, NULL);
 INSERT INTO Impiegato(Cod, Nome, Cognome, Data_Assunto, Stipendio, Capo) VALUES (4, 'Tiziana', 'Viola', TO_DATE('03/03/2013', 'DD/MM/YYYY'), 1500, 1);
 INSERT INTO Impiegato(Cod, Nome, Cognome, Data_Assunto, Stipendio, Capo) VALUES (5, 'Umberto', 'Neri', TO_DATE('12/09/2014', 'DD/MM/YYYY'), 2500, 2);
-INSERT INTO Impiegato(Cod, Nome, Cognome, Data_Assunto, Stipendio, Capo) VALUES (6, 'Francesca', 'Tari', TO_DATE('22/11/2013', 'DD/MM/YYYY'), 2000, 2);
+INSERT INTO Impiegato(Cod, Nome, Cognome, Data_Assunto, Stipendio, Capo) VALUES (6, 'Francesca', 'Russo', TO_DATE('22/11/2013', 'DD/MM/YYYY'), 2000, 2);
 INSERT INTO Impiegato(Cod, Nome, Cognome, Data_Assunto, Stipendio, Capo) VALUES (7, 'Luigi', 'Marrone', TO_DATE('05/02/2012', 'DD/MM/YYYY'), 2800, 3);
 
 UPDATE impiegato SET Capo = 2 WHERE Cod = 1;
@@ -44,4 +44,4 @@ SELECT i.cod, genera_mail(i.nome, i.cognome) AS mail FROM impiegato i WHERE i.st
 
 
 -- 4. Selezione dei dipendenti assunti da più di 50 mesi sottoposti di 'Bianchi'
-SELECT * FROM impiegato i WHERE (i.capo = (SELECT Cod FROM Impiegato WHERE Cognome='Bianchi')) AND (i.data_assunto <= ADD_MONTHS(CURRENT_DATE, -50));
+SELECT * FROM impiegato i WHERE (i.capo = (SELECT Cod FROM Impiegato WHERE Cognome = 'Bianchi')) AND (i.data_assunto <= ADD_MONTHS(CURRENT_DATE, -50));
