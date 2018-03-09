@@ -1,5 +1,5 @@
 -- 1. Creazione della tabella
-CREATE TABLE Impiegato
+CREATE TABLE Impiegato (
     Cod NUMBER(5) CONSTRAINT impiegato_pk PRIMARY KEY,
     Nome VARCHAR2(32) NOT NULL,
     Cognome VARCHAR2(32) NOT NULL,
@@ -42,4 +42,4 @@ SELECT i.cod, genera_mail(i.nome, i.cognome) AS mail FROM impiegato i WHERE i.st
 
 
 -- 4. Selezione dei dipendenti assunti da più di 50 mesi
--- TODO
+SELECT * FROM impiegato i WHERE i.data_assunto <= ADD_MONTHS(CURRENT_DATE, -50);
