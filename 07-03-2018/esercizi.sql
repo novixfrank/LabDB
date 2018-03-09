@@ -1,60 +1,45 @@
--- 1 crea tabella
-CREATE TABLE Impiegato (
-    Cod NUMBER(5),
+-- 1. Creazione della tabella
+CREATE TABLE Impiegato 
+    Cod NUMBER(5) CONSTRAINT impiegato_pk PRIMARY KEY,
     Nome VARCHAR2(32) NOT NULL,
     Cognome VARCHAR2(32) NOT NULL,
     Data_Assunto DATE NOT NULL,
     Stipendio NUMBER(6) NOT NULL,
     Capo NUMBER(5) NULL,
-    CONSTRAINT impiegato_pk PRIMARY KEY (Cod),
     CONSTRAINT impiegato_fk FOREIGN KEY (Capo) REFERENCES Impiegato(Cod)
+);
+
+
+
+-- 2. Inserimento
+INSERT INTO Impiegato(Cod, Nome, Cognome, Data_Assunto, Stipendio, Capo) VALUES (1, 'Alessandro', 'Rossi', TO_DATE('01/03/2014','DD/MM/YYYY'), 3000, NULL); -- 2
+INSERT INTO Impiegato(Cod, Nome, Cognome, Data_Assunto, Stipendio, Capo) VALUES (2, 'Alberto', 'Bianchi', TO_DATE('01/02/2013', 'DD/MM/YYYY'), 4000, NULL); -- 3
+INSERT INTO Impiegato(Cod, Nome, Cognome, Data_Assunto, Stipendio, Capo) VALUES (3, 'Andrea', 'Verdi', TO_DATE('03/06/2011', 'DD/MM/YYYY'), 5000, NULL);
+INSERT INTO Impiegato(Cod, Nome, Cognome, Data_Assunto, Stipendio, Capo) VALUES (4, 'Tiziana', 'Viola', TO_DATE('03/03/2013', 'DD/MM/YYYY'), 1500, 1);
+INSERT INTO Impiegato(Cod, Nome, Cognome, Data_Assunto, Stipendio, Capo) VALUES (5, 'Umberto', 'Neri', TO_DATE('12/09/2014', 'DD/MM/YYYY'), 2500, 2);
+INSERT INTO Impiegato(Cod, Nome, Cognome, Data_Assunto, Stipendio, Capo) VALUES (6, 'Francesca', 'Tari', TO_DATE('22/11/2013', 'DD/MM/YYYY'), 2000, 2);
+INSERT INTO Impiegato(Cod, Nome, Cognome, Data_Assunto, Stipendio, Capo) VALUES (7, 'Luigi', 'Marrone', TO_DATE('05/02/2012', 'DD/MM/YYYY'), 2800, 3);
+
+UPDATE impiegato SET Capo = 2 WHERE Cod = 1;
+UPDATE impiegato SET Capo = 3 WHERE Cod = 2;
+
+
+
+-- 3. Dichiarazione della funzione di generazione delle e-mail
+CREATE OR REPLACE FUNCTION genera_mail(
+    nome VARCHAR2,
+    cognome VARCHAR2
 )
-
--- 2 inserisci impiegato
-INSERT INTO Impiegato(Cod, Nome, Cognome, Data_Assunto, Stipendio, Capo) VALUES ( , ‘ ‘, ‘ ‘, TO_DATE( ‘ ‘, ‘DD/MM/YYYY’,  ,  )
-
---proiezione dati
-SELECT * FROM Impiegato ORDER BY COD;
-
--- 3.1 generazione via interrogazione di email se stipendio<=3000
-SELECT LOWER(SUBSTR(I.Nome, 1,1)||I.Cognome|| '@lazienda.it')
-FROM Impiegato I
-WHERE I.Stipendio<=3000
-
--- 3.2 funzione genera_mail
-CREATE OR REPLACE FUNCTION genera_mail (id NUMBER) RETURN VARCHAR2
-    AS
-       nome impiegato.nome%TYPE := NULL;
-       cognome impiegato.cognome%TYPE  := NULL;
-    BEGIN
-       SELECT nome, cognome INTO nome, cognome FROM Impiegato WHERE Cod = id;
-       RETURN LOWER(SUBSTR(nome, 1, 1) || cognome || '@lazienda.it');
-    END;
-
--- 3.3 cursore genera_mail
-DECLARE
-    CURSOR impiegati IS SELECT Cod FROM impiegato WHERE stipendio > 3000;
-
+RETURN VARCHAR2
+AS
 BEGIN
-    FOR impiegato IN impiegati LOOP
-        DBMS_OUTPUT.PUT_LINE(genera_mail(impiegato.Cod));
-    END LOOP;
+    RETURN LOWER(SUBSTR(nome, 1, 1) || cognome || '@lazienda.it');
 END;
 
--- 3.4 DA CONTROLLARE
-SET SERVEROUTPUT ON;
+-- Selezione dei dati:
+SELECT i.cod, genera_mail(i.nome, i.cognome) AS mail FROM impiegato i WHERE i.stipendio <= 3000
 
-DECLARE
-    CURSOR impiegati IS SELECT Cod FROM impiegato WHERE stipendio > 3000;
-    TYPE imp_mail IS RECORD (
-        CodImpiegato NUMBER(5),
-        Mail VARCHAR2(128)
-    );
 
-BEGIN
-    FOR impiegato IN impiegati LOOP
-        DBMS_OUTPUT.PUT_LINE(genera_mail(impiegato.Cod));
-        --INSERT INTO imp_mail(CodImpiegato, Mail) VALUES (impiegato.Cod, genera_mail(impiegato.Cod));
-    END LOOP;
-    --SELECT * FROM imp_mail;
-END;
+
+-- 4. Selezione dei dipendenti assunti da più di 50 mesi
+-- TODO
