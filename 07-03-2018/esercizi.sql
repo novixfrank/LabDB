@@ -42,4 +42,4 @@ SELECT i.cod, genera_mail(i.nome, i.cognome) AS mail FROM impiegato i WHERE i.st
 
 
 -- 4. Selezione dei dipendenti assunti da più di 50 mesi
-SELECT * FROM impiegato i WHERE i.data_assunto <= ADD_MONTHS(CURRENT_DATE, -50);
+SELECT * FROM impiegato i WHERE (i.capo=2)AND (i.data_assunto <= ADD_MONTHS(CURRENT_DATE, -50));
