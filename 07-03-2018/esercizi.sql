@@ -1,3 +1,5 @@
+-- Traccia: https://github.com/novixfrank/LabDB/blob/master/07-03-2018/traccia.md
+
 -- 1. Creazione della tabella
 CREATE TABLE Impiegato (
     Cod NUMBER(5) CONSTRAINT impiegato_pk PRIMARY KEY,
