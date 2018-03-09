@@ -1,5 +1,5 @@
-# TRACCIA ESERCITAZIONE N° 1 DEL 07/08/2018
-Si consideri la tabella `IMPIEGATO(Cod,Nome,Cognome,Data_Assunto,Stipendio,Capo)` in cui:
+# Traccia esercitazione N° 1 del 07/08/2018
+Si consideri la tabella `IMPIEGATO(Cod, Nome, Cognome, Data_Assunto, Stipendio, Capo)` in cui:
 - `Cod` è un codice univoco;
 - `Capo` si riferisce al codice del diretto superiore dell’impiegato (se esistente).
 
@@ -7,6 +7,9 @@ Si consideri la tabella `IMPIEGATO(Cod,Nome,Cognome,Data_Assunto,Stipendio,Capo)
 1. Si popoli la tabella con i dati indicati nella tabella sottostante:
 1. Si determinino gli indirizzi email degli impiegati che hanno uno stipendio inferiore o uguale a 3000, supponendo che abbiano la forma `adeluca@lazienda.it` (iniziale nome + cognome);
 1. Si trovi nome e cognome di tutti i sottoposti di Bianchi assunti da più di 50 mesi.
+
+<br/>
+<br/>
 
 | Cod |	   Nome    | Cognome | Data_Assunto | Stipendio |  Capo  |
 | :-: | :--------- | :------ | :----------- | :-------- | :----: |
