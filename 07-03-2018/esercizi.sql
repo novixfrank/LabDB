@@ -1,5 +1,5 @@
 -- 1. Creazione della tabella
-CREATE TABLE Impiegato 
+CREATE TABLE Impiegato
     Cod NUMBER(5) CONSTRAINT impiegato_pk PRIMARY KEY,
     Nome VARCHAR2(32) NOT NULL,
     Cognome VARCHAR2(32) NOT NULL,
@@ -37,7 +37,7 @@ BEGIN
 END;
 
 -- Selezione dei dati:
-SELECT i.cod, genera_mail(i.nome, i.cognome) AS mail FROM impiegato i WHERE i.stipendio <= 3000
+SELECT i.cod, genera_mail(i.nome, i.cognome) AS mail FROM impiegato i WHERE i.stipendio <= 3000;
 
 
 
