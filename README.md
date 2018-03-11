@@ -12,8 +12,8 @@ In questo file invece è possibile trovare la guida per l'installazione dei soft
 ## Indice
 1. [Installare i software necessari](#installare-i-software-necessari);
     1. [Download dei packages](#download-dei-packages);
-    1. [Installare Oracle 11g XE Release 2](installare-oracle-11g-xe-release-2);
-        []()
+    1. [Installare Oracle 11g XE Release 2](#installare-oracle-11g-xe-release-2);
+        - [Configurare Oracle 11g XE Release 2](#configurare-oracle-11g-xe-release-2);
 1. [F.A.Q.](#faq).
 
 ## Installare i software necessari
@@ -43,10 +43,31 @@ La prima fase fondamentale dell'installazione è scegliere il percorso della car
 La seconda è invece la password dell'utente si sistema (chiamato appunto `SYSTEM` [a.k.a.](https://www.urbandictionary.com/define.php?term=aka) `SYS`). **ATTENZIONE!** E' importante non mettere una password casuale! Servirà più avanti!<br/>
 ![Scegliere la password dell'utente di sistema](https://i.imgur.com/hdQhSHY.jpg)
 
+Continuando, non si deve far altro che proseguire ed aspettare finchè l'installazione non verrà completata.
+
+#### Configurare Oracle 11g XE Release 2
+Ad installazione completata apparirà la seguente icona sul proprio Desktop:<br/>
+![Icona del Get Started With Oracle Database](https://i.imgur.com/bbogUCT.jpg)
+
+Ogni tanto potrebbe capitare un messaggio di errore e non aprire il link, se accadesse, basta seguire i seguenti passaggi:
+Cliccare col **Tasto destro** sul file sopra citato e selezionare la voce **Apri percorso file**; nel caso non sia disponibile si può cliccare sulla voce **Proprietà** e premere il bottone con scritto **Apri percorso file**:<br/>
+![Proprietà del link Get Started With Oracle Database](https://i.imgur.com/bbogUCT.jpg)
+
+Verrà selezionato un file chiama `Get_Started`, bisogna accedere anche alle sue proprietà e selezionare il link contenuto nel campo URL e modificarlo da `http://127.0.0.1:%HTTPPORT%/apex/f?p=4950` in `http://127.0.0.1:8080/apex/f?p=4950`:<br/>
+![Proprietà Get Started With Oracle Database](https://i.imgur.com/1lv0Jrh.jpg)
+
+Potrebbe capitare che potrebbe essere visto online un link di questo tipo: `http://localhost:8080/apex/f?p=4950`; `localhost` e `127.0.0.1` significano la stessa cosa e rappresentato il PC locale. **Sono uguali per qualsiasi sistema operativo e funzionano anche offline!**
+
+Ora è possibile cliccare sul collegamento ogni qualvolta si voglia.
+
+_Guida da completare._
 
 ## F.A.Q.
 Q: **Posso installare questi software anche su Linux o Mac?**<br/>
 A: SQL Developer, non necessitando di installazione, non dovrebbe creare problemi, ma, per esperienza personale, installare Oracle 11g XE su Ubuntu è abbastanza difficile. Dal sito è possibile scaricare solo l'installer per RedHat. Inoltre sembrerebbe che non viene sviluppato software compatibile con Mac.
+
+Q: **Per utilizzare questi software ho bisogno della connessione ad Internet?**<br/>
+A: Assolutamente no.
 
 Q: **Posso installare altre distribuzioni di SQL (MySQL, Microsoft SQL Server)?**<br/>
 A: Non vi sono divieti sul cosa si voglia installare sul proprio PC, ma sconsiglio l'installazione di questi software semplicemente perchè non hanno finalità utili nel contesto del corso in quanto il docente utilizza soltanto Oracle SQL.
