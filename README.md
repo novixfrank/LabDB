@@ -111,6 +111,9 @@ A: Assolutamente no.
 Q: **Posso installare altre distribuzioni di SQL (MySQL, Microsoft SQL Server)?**<br/>
 A: Non vi sono divieti sul cosa si voglia installare sul proprio PC, ma sconsiglio l'installazione di questi software semplicemente perchè non hanno finalità utili nel contesto del corso in quanto il docente utilizza soltanto Oracle SQL.
 
+Q: **Ma nello specifico, cosa sono questi software?**<br/>
+A: Oracle 11g XE Release 2 è il server che contiene e rappresenta il nostro RDBMS (DBMS relazionale), mentre SQL Developer è semplicemente un client (proprio come APEX dal browser e SQl Plus da console).
+
 Q: **Se non volessi/potessi installare software, vi è un'alternativa (preferibilmente gratuita)?**<br/>
 A: Sì. La Oracle mette a disposizione [LiveSQL](https://livesql.oracle.com) che permette anche si salvare i propri script. Funziona tramite browser web ed accessibile anche da smartphone. Inoltre l'università mette a disposizione lo stesso server che si utilizza in laboratorio che è utilizzabile anch'esso solo dal browser (non tramite SQL Developer per questioni di sicurezza) tramite la piattaforma APEX (Application Express), ma che sconsiglio vivamente di utilizzare in quanto molto lento.
 
