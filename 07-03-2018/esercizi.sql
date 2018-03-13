@@ -35,7 +35,7 @@ CREATE OR REPLACE FUNCTION genera_mail(
 RETURN VARCHAR2
 AS
 BEGIN
-    RETURN LOWER(SUBSTR(nome, 1, 1) || cognome || '@lazienda.it');
+    RETURN LOWER(SUBSTR(nome, 1, 1) ||  TRANSLATE(cognome, ' ''', '') || '@lazienda.it');
 END;
 
 -- Selezione dei dati:
