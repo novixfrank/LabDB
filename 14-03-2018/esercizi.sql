@@ -1,4 +1,4 @@
--- 1. Creazione della vista
+--1.1. Creazione della vista
 CREATE OR REPLACE VIEW stip_proposto (
     cod, nome, attuale, proposto, capo
 ) AS SELECT i.cod, i.nome || ' ' || i.cognome, i.stipendio, CASE
@@ -8,3 +8,13 @@ ELSE i.stipendio
 END, NVL2(c.cognome, c.cognome, 'Nessuno')
 FROM impiegato i LEFT OUTER JOIN impiegato c ON i.capo = c.cod
 ORDER BY i.cod;
+
+--1.2. Aggiornamento stipendio e cancellazione vista
+UPDATE impiegato i
+SET i.stipendio = (
+    SELECT s.proposto
+    FROM stip_proposto s
+    WHERE s.cod = i.cod
+);
+
+DROP VIEW stip_proposto;
