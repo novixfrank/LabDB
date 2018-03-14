@@ -26,3 +26,6 @@ INSERT INTO impiegato i (
     SELECT p.cod_i AS cod, p.nome, p.cognome, p.data_assunto, p.stipendio, p.capo
     FROM personale p
 );
+
+-- 2.2 Eliminazione impiegati assunti da meno di 3 annni
+DELETE FROM impiegato i WHERE ADD_MONTHS(i.data_assunto, 12 * 3) >= CURRENT_DATE;
