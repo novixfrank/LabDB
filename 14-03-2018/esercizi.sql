@@ -1,4 +1,4 @@
---1.1. Creazione della vista
+-- 1.1. Creazione della vista
 CREATE OR REPLACE VIEW stip_proposto (
     cod, nome, attuale, proposto, capo
 ) AS SELECT i.cod, i.nome || ' ' || i.cognome, i.stipendio, CASE
@@ -9,7 +9,7 @@ END, NVL2(c.cognome, c.cognome, 'Nessuno')
 FROM impiegato i LEFT OUTER JOIN impiegato c ON i.capo = c.cod
 ORDER BY i.cod;
 
---1.2. Aggiornamento stipendio e cancellazione vista
+-- 1.2. Aggiornamento stipendio e cancellazione vista
 UPDATE impiegato i
 SET i.stipendio = (
     SELECT s.proposto
@@ -20,3 +20,9 @@ SET i.stipendio = (
 DROP VIEW stip_proposto;
 
 -- Creazione tabella 'personale' per esercizio 2 (Vedi file personale.sql)
+
+-- 2.1. Inserimento "nuovi" impiegati da personale
+INSERT INTO impiegato i (
+    SELECT p.cod_i AS cod, p.nome, p.cognome, p.data_assunto, p.stipendio, p.capo
+    FROM personale p
+);
