@@ -5,7 +5,7 @@ Questa repo è a cura di **Gennaro Landolfi** (@rinodrummer) e **Francesco Novie
 Il suo contenuto è relativo al corso Lab. di Basi di Dati del professore Alessandro De Luca.
 
 All'interno di questa repo quindi è possibile trovare cartelle contenenti le esercitazioni di laboratorio svolte da noi.
-I nostri esercizi potrebbero non essere corretti al 100% (secondo la richiesta del docente), ma possono sempre essere utili per un confronto. Inoltre, se la traccia presentata è poco chiara, gli esercizi verranno svolti secondo le conformità della comunità Oracle.
+I nostri esercizi potrebbero non essere corretti al 100% (secondo la richiesta del docente), ma possono sempre essere utili per un confronto. Inoltre, se la traccia presentata è poco chiara, gli esercizi verranno svolti secondo la nostra interpretazione e le conformità della comunità Oracle.
 
 In questo file invece è possibile trovare la guida per l'installazione dei software **su Windows** e alcune F.A.Q. riguardo l'installazione.
 
@@ -107,6 +107,9 @@ A: SQL Developer, non necessitando di installazione, non dovrebbe creare problem
 
 Q: **Per utilizzare questi software ho bisogno della connessione ad Internet?**<br/>
 A: Assolutamente no.
+
+Q: **Come mai in SQL Developer mi vengono mostrate tabelle che io non ho creato? Posso rimuoverle?**<br/>
+A: Oracle 11g XE crea tabelle tecniche di APEX (che **NON DEVONO ESSERE MAI ELIMINATE** - iniziano col prefisso `APEX$_`) ed inoltre anche alcune tabelle di esempio. Anche se possono essere eliminate, sconsiglio di farlo in quanto potrebbero tornare utili per fini personali/didattici, tuttavia però si possono **filtrare** le tabelle (e non solo) da visualizzare, basta cliccare col **tasto destro** sull'elemento da filtrare > **Applica filtro...**, dalla finestra che si aprirà cliccare sul pulsante che ha come icona una '+' verde ed applicare i seguenti filtri: `NAME NOT LIKE APEX$_%`, `NAME NOT LIKE DEMO_%`, `NAME <> EMP`.
 
 Q: **Posso installare altre distribuzioni di SQL (MySQL, Microsoft SQL Server)?**<br/>
 A: Non vi sono divieti sul cosa si voglia installare sul proprio PC, ma sconsiglio l'installazione di questi software semplicemente perchè non hanno finalità utili nel contesto del corso in quanto il docente utilizza soltanto Oracle SQL.
