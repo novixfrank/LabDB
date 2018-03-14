@@ -39,5 +39,5 @@ END;
 -- Selezione dei dati:
 SELECT i.cod, genera_mail(i.nome, i.cognome) AS mail FROM impiegato i WHERE i.stipendio <= 3000;
 
--- 2.2. Selezione dei dipendenti assunti da più di 50 mesi sottoposti di 'Bianchi'
+-- 2.2. Selezione dei dipendenti assunti da più di 50 mesi sottoposti di 'Bianchi':
 SELECT * FROM impiegato i WHERE i.capo IN (SELECT cod FROM impiegato WHERE cognome = 'Bianchi') AND i.data_assunto <= ADD_MONTHS(CURRENT_DATE, -50);
