@@ -18,3 +18,5 @@ SET i.stipendio = (
 );
 
 DROP VIEW stip_proposto;
+
+-- Creazione tabella 'personale' per esercizio 2 (Vedi file personale.sql)
