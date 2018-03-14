@@ -27,5 +27,8 @@ INSERT INTO impiegato i (
     FROM personale p
 );
 
--- 2.2 Eliminazione impiegati assunti da meno di 3 anni
+-- 2.2. Eliminazione impiegati assunti da meno di 3 anni
 DELETE FROM impiegato i WHERE ADD_MONTHS(i.data_assunto, 12 * 3) >= CURRENT_DATE;
+
+-- 3. Selezione degli impiegati con doppia nel cognome
+SELECT i.cod, i.cognome FROM impiegato i WHERE REGEXP_LIKE(i.cognome, '([a-zA-Z])\1');
