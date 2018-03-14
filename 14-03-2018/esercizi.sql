@@ -31,4 +31,4 @@ INSERT INTO impiegato i (
 DELETE FROM impiegato i WHERE ADD_MONTHS(i.data_assunto, 12 * 3) >= CURRENT_DATE;
 
 -- 3. Selezione degli impiegati con doppia nel cognome
-SELECT i.cod, i.cognome FROM impiegato i WHERE REGEXP_LIKE(i.cognome, '([a-zA-Z])\1');
+SELECT i.cod, i.cognome FROM impiegato i WHERE REGEXP_LIKE(LOWER(i.cognome), '([a-z])\1');
