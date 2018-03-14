@@ -1,4 +1,4 @@
-
+-- Versione aggiornata per rendere funzionante l'esercizio 2.2
   CREATE TABLE PERSONALE 
    (	COD_I NUMBER(4), 
 	NOME VARCHAR2(40), 
@@ -11,7 +11,7 @@
 Insert into PERSONALE (COD_I,NOME,COGNOME,DATA_ASSUNTO,STIPENDIO,CAPO) values (9,'Filippo','De Rossi',to_date('12/09/2014','DD/MM/YYYY'),2500,2);
 Insert into PERSONALE (COD_I,NOME,COGNOME,DATA_ASSUNTO,STIPENDIO,CAPO) values (10,'Marianna','Rubino',to_date('10/01/2015','DD/MM/YYYY'),1600,9);
 Insert into PERSONALE (COD_I,NOME,COGNOME,DATA_ASSUNTO,STIPENDIO,CAPO) values (8,'Antonio','Celeste',to_date('10/01/2015','DD/MM/YYYY'),1500,1);
-Insert into PERSONALE (COD_I,NOME,COGNOME,DATA_ASSUNTO,STIPENDIO,CAPO) values (11,'Alessandro','Chiari',to_date('3/03/2015','DD/MM/YYYY'),1280,9);
+Insert into PERSONALE (COD_I,NOME,COGNOME,DATA_ASSUNTO,STIPENDIO,CAPO) values (11,'Alessandro','Chiari',to_date('23/03/2015','DD/MM/YYYY'),1280,9);
 Insert into PERSONALE (COD_I,NOME,COGNOME,DATA_ASSUNTO,STIPENDIO,CAPO) values (12,'Chiara','Delneri',to_date('01/03/2014','DD/MM/YYYY'),2600,7);
 
   ALTER TABLE PERSONALE ADD CONSTRAINT PERSONALE_PK PRIMARY KEY (COD_I) ENABLE;
