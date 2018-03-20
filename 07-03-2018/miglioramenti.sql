@@ -6,7 +6,7 @@ CREATE OR REPLACE FUNCTION genera_mail(
 RETURN VARCHAR2
 AS
 BEGIN
-    RETURN LOWER(SUBSTR(nome, 1, 1) ||  REGEXP_REPLACE(LOWER(cognome), '[a-z]') || '@lazienda.it');
+    RETURN LOWER(SUBSTR(nome, 1, 1) ||  REGEXP_REPLACE(LOWER(cognome), '[^a-z]') || '@lazienda.it');
 END;
 
 
