@@ -116,9 +116,26 @@ Mentre chi ha voglia di esercitarsi subito (ed ovviamente ha un S.O. a 64 bit) p
 
 Ricordo che prima di poter scaricare, è necessario accettare la licenza, come illustrato nell'immagine.
 
-![Download di Oracle SQl Developer](https://i.imgur.com/1wzRe8k.jpg)
+![Download di Oracle SQL Developer](https://i.imgur.com/1wzRe8k.jpg)
 
 #### Configurare Oracle SQL Developer
+Nel caso si scelga la versione senza JDK oppure venga eliminata (o rinominata) la cartella `jdk` dalla directory di SQL Developer verrà mostrato il seguente messaggio (solo la prima volta):
+
+![Directory JDK di SQL Developer](https://i.imgur.com/gs7wUmS.jpg)
+
+Inoltre, sempre al primo avvio, verrà mostrato questo ulteriore messaggio:
+![Versioni disponibili di SQL Developer](https://i.imgur.com/NCszsut.jpg)
+
+Verrà mostrata la schermata iniziale di SQL Developer, dalla quale consiglio di disabilitare la pagina di benvenuto (Cliccare sulla spunta **Visualizza all'avvio**):
+![Pagina iniziale di SQL Developer](https://i.imgur.com/Qiq8EK8.jpg)
+
+Per poter utilizzare il software è necessario specificare una connessione. Per farlo bisogna cliccare col tasto destro sulla voce **Connessioni** dal menù laterale sinistro e selezionare la voce **Nuova connessione...**. Verrà mostrata la seguente finestra, dove è necessario inserire i dati dell'utente creato assieme alla workspace. Prima di cliccare su **Connetti**, è consigliato cliccare prima sul tasto **Salva**:
+![Creazione della connessione di SQL Developer](https://i.imgur.com/yfK2mR8.jpg)
+
+Ora è possibile scrivere tutte le query che si vogliono.
+
+Anche SQL Developer ha due modalità di esecuzione dello script. Consiglio di scegliere la seconda perchè permette l'esecuzione multi-query.
+![Creazione della connessione di SQL Developer](https://i.imgur.com/yfK2mR8.jpg)
 
 ## F.A.Q.
 Q: **Posso installare questi software anche su Linux o Mac?**<br/>
