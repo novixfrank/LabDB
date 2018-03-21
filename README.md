@@ -123,18 +123,18 @@ Nel caso si scelga la versione senza JDK oppure venga eliminata (o rinominata) l
 
 ![Directory JDK di SQL Developer](https://i.imgur.com/gs7wUmS.jpg)
 
-Inoltre, sempre al primo avvio, verrà mostrato questo ulteriore messaggio:
+Inoltre, sempre al primo avvio, verrà mostrato questo ulteriore messaggio:<br/>
 ![Versioni disponibili di SQL Developer](https://i.imgur.com/NCszsut.jpg)
 
-Verrà mostrata la schermata iniziale di SQL Developer, dalla quale consiglio di disabilitare la pagina di benvenuto (Cliccare sulla spunta **Visualizza all'avvio**):
+Verrà mostrata la schermata iniziale di SQL Developer, dalla quale consiglio di disabilitare la pagina di benvenuto (Cliccare sulla spunta **Visualizza all'avvio**):<br/>
 ![Pagina iniziale di SQL Developer](https://i.imgur.com/Qiq8EK8.jpg)
 
-Per poter utilizzare il software è necessario specificare una connessione. Per farlo bisogna cliccare col tasto destro sulla voce **Connessioni** dal menù laterale sinistro e selezionare la voce **Nuova connessione...**. Verrà mostrata la seguente finestra, dove è necessario inserire i dati dell'utente creato assieme alla workspace. Prima di cliccare su **Connetti**, è consigliato cliccare prima sul tasto **Salva**:
+Per poter utilizzare il software è necessario specificare una connessione. Per farlo bisogna cliccare col tasto destro sulla voce **Connessioni** dal menù laterale sinistro e selezionare la voce **Nuova connessione...**. Verrà mostrata la seguente finestra, dove è necessario inserire i dati dell'utente creato assieme alla workspace. Prima di cliccare su **Connetti**, è consigliato cliccare prima sul tasto **Salva**:<br/>
 ![Creazione della connessione di SQL Developer](https://i.imgur.com/yfK2mR8.jpg)
 
 Ora è possibile scrivere tutte le query che si vogliono.
 
-Anche SQL Developer ha due modalità di esecuzione dello script. Consiglio di scegliere la seconda perchè permette l'esecuzione multi-query.
+Anche SQL Developer ha due modalità di esecuzione dello script. Consiglio di scegliere la seconda perchè permette l'esecuzione multi-query.<br/>
 ![Creazione della connessione di SQL Developer](https://i.imgur.com/yfK2mR8.jpg)
 
 ## F.A.Q.
