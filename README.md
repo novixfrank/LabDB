@@ -15,6 +15,8 @@ In questo file invece è possibile trovare la guida per l'installazione dei soft
     1. [Installare Oracle 11g XE Release 2](#installare-oracle-11g-xe-release-2);
         - [Configurare Oracle 11g XE Release 2](#configurare-oracle-11g-xe-release-2);
         - [Utilizzare Application Express](#utilizzare-application-express);
+    1. [Installare Oracle SQL Developer](#installare-oracle-sql-developer);
+        - [Configurare Oracle SQL Developer](#configurare-oracle-sql-developer);
 1. [F.A.Q.](#faq).
 
 ## Installare i software necessari
@@ -97,28 +99,51 @@ Ora è possibile a le tre operazioni principali:<br/>
 ![Scelte disponibili in SQL Workshop](https://i.imgur.com/tDdc8x0.jpg)
 
 In ordine, esse rappresentano:
-1. **Object Browser**: una sezione che ci permette di visualizzare tutti gli elementi creati nel nostro database;
+1. **Object Browser**: una sezione che permette di visualizzare tutti gli elementi presenti nella workspace;
 1. **SQL Commands**: editor di **singole query**;
 1. **SQL Scripts**: editor **multi-query**, il più utilizzato in quanto permette di scrivere appunto più query.
 
+### Installare Oracle SQL Developer
+Oracle SQl Developer è un programma abbastanza consigliato da utilizzare in quanto, molto probabilmente la prova pratica potrebbe essere svolta utilizzandolo.
+
+Il download può essere effettuato da questa pagina: [Oracle SQL Developer Downloads](http://www.oracle.com/technetwork/developer-tools/sql-developer/downloads/index.html).
+
+Come definito all'inizio della guida, è possibile principalmente scaricare due package: **Windows 32-bit/64-bit** e **Windows 64-bit with JDK 8 included**, il primo necessita dell'installazione manuale della JDK, quindi consiglio di rifarsi alla guida ufficiale o cercare online, mentre il secondo già include la JDK, ma è ovviamente più pesante e non permette di usare la propria JDK (quindi si avranno almeno due versioni distinte di questo pachetto software sul PC).
+
+Personalmente consiglio il primo se si ha la possibilità di perdere tempo per installare la JDK perchè è obbligatoriamente necessaria per poter sviluppare in Java (cosa che faremo nella seconda parte di questo corso e vedremo in altri corsi, inoltre Java è e suppongo continuerà ad essere uno di quei linguaggi che sono uno standard nel mondo lavorativo). Avanzando col corso, potrei mettere una guida sull'argomento, ma al momento, non ho molto tempo a disposizione.
+
+Mentre chi ha voglia di esercitarsi subito (ed ovviamente ha un S.O. a 64 bit) può scaricare il package con la JDK inclusa.
+
+Ricordo che prima di poter scaricare, è necessario accettare la licenza, come illustrato nell'immagine.
+
+![Download di Oracle SQl Developer](https://i.imgur.com/1wzRe8k.jpg)
+
+#### Configurare Oracle SQL Developer
+
 ## F.A.Q.
 Q: **Posso installare questi software anche su Linux o Mac?**<br/>
-A: SQL Developer, non necessitando di installazione, non dovrebbe creare problemi, ma, per esperienza personale, installare Oracle 11g XE su Ubuntu è abbastanza difficile. Dal sito è possibile scaricare solo l'installer per RedHat. Inoltre sembrerebbe che non viene sviluppato software compatibile con Mac.
+A: SQL Developer, non necessitando di installazione, non dovrebbe creare problemi, ma, per esperienza personale, installare Oracle 11g XE (anche versoni successive) su Ubuntu è abbastanza difficile: dal sito ufficiale è possibile scaricare solo l'installer per RedHat. Inoltre sembrerebbe che non viene sviluppato software compatibile con Mac.
 
 Q: **Per utilizzare questi software ho bisogno della connessione ad Internet?**<br/>
 A: Assolutamente no.
 
+Q: **E' possibile visualizzare il numero di riga nel pannello di scrittura delle query?**<br/>
+A: Sì, vi sono due metodi: 1) Cliccare col tasto destro nell'area a sinistra dell'area di testo e cliccare sull'opzione **Attiva/disattiva numero di riga**; 2) Dal menù superiore, **Strumenti** > **Preferenze...** > **Editor di codice** > **Margine interno riga**, poi abilitare **Mostra numeri di riga**.
+
+Q: **Perchè dopo aver eseguito operazioni sulle tabelle (eliminazione, rinominazione), continuo a vederle come se nulla fosse accaduto?**<br/>
+A: SQL Developer spesso dimentica di aggiornare l'interfaccia grafica, per far sì che l'interfaccia si aggiorni, basta cliccare sull'icona dell'aggiornamento (![Aggiornamento](https://i.imgur.com/o5wjezR.jpg)), certe volte è necessario nascondere gli oggetti che si stanno visualizzando, premere il tasto di aggiornamento ed esplodere di nuovo gli oggetti.
+
 Q: **Come mai in SQL Developer mi vengono mostrate tabelle che io non ho creato? Posso rimuoverle?**<br/>
-A: Oracle 11g XE crea tabelle tecniche di APEX (che **NON DEVONO ESSERE MAI ELIMINATE** - iniziano col prefisso `APEX$_`) ed inoltre anche alcune tabelle di esempio. Anche se possono essere eliminate, sconsiglio di farlo in quanto potrebbero tornare utili per fini personali/didattici, tuttavia però si possono **filtrare** le tabelle (e non solo) da visualizzare, basta cliccare col **tasto destro** sull'elemento da filtrare > **Applica filtro...**, dalla finestra che si aprirà cliccare sul pulsante che ha come icona una '+' verde ed applicare i seguenti filtri: `NAME NOT LIKE APEX$_%`, `NAME NOT LIKE DEMO_%`, `NAME <> EMP`, `NAME <> DEPT`. Come indicato sopra, esplorando gli elementi della connessione è possibile notare che vi sono altri elementi che possono essere filtrati con la stessa tecnica appena descritta.
+A: Oracle 11g XE crea tabelle tecniche di APEX (che **NON DEVONO ESSERE MAI ELIMINATE** - iniziano col prefisso `APEX$_`) ed inoltre anche alcune tabelle di esempio (iniziano col prefisso `DEMO_`). Anche se possono essere eliminate, sconsiglio di farlo in quanto potrebbero tornare utili per fini personali/didattici, tuttavia però si possono **filtrare** le tabelle (e non solo) da visualizzare, basta cliccare col **tasto destro** sull'elemento da filtrare > **Applica filtro...**, dalla finestra che si aprirà cliccare sul pulsante che ha come icona una '+' verde ed applicare i seguenti filtri: `NAME NOT LIKE APEX$_%`, `NAME NOT LIKE DEMO_%`, `NAME <> EMP`, `NAME <> DEPT`. Come indicato sopra, esplorando gli elementi della connessione è possibile notare che vi sono altri elementi che possono essere filtrati con la stessa tecnica appena descritta.
 
 Q: **Posso installare altre distribuzioni di SQL (MySQL, Microsoft SQL Server)?**<br/>
 A: Non vi sono divieti sul cosa si voglia installare sul proprio PC, ma sconsiglio l'installazione di questi software semplicemente perchè non hanno finalità utili nel contesto del corso in quanto il docente utilizza soltanto Oracle SQL.
 
 Q: **Ma nello specifico, cosa sono questi software?**<br/>
-A: Oracle 11g XE Release 2 è il server che contiene e rappresenta il nostro RDBMS (DBMS relazionale), mentre SQL Developer è semplicemente un client (proprio come APEX dal browser e SQl Plus da console).
+A: Oracle 11g XE Release 2 è il server che contiene e rappresenta il nostro RDBMS (DBMS relazionale), mentre SQL Developer è semplicemente un client (proprio come APEX dal browser e SQL Plus da console).
 
 Q: **Se non volessi/potessi installare software, vi è un'alternativa (preferibilmente gratuita)?**<br/>
-A: Sì. La Oracle mette a disposizione [LiveSQL](https://livesql.oracle.com) che permette anche si salvare i propri script. Funziona tramite browser web ed accessibile anche da smartphone. Inoltre l'università mette a disposizione lo stesso server che si utilizza in laboratorio che è utilizzabile anch'esso solo dal browser (non tramite SQL Developer per questioni di sicurezza) tramite la piattaforma APEX (Application Express), ma che sconsiglio vivamente di utilizzare in quanto molto lento.
+A: Sì. La Oracle mette a disposizione [LiveSQL](https://livesql.oracle.com) che permette anche di salvare i propri script. Funziona tramite browser web ed accessibile anche da smartphone. Inoltre l'università mette a disposizione lo stesso server che si utilizza in laboratorio che è utilizzabile anch'esso solo dal browser (non tramite SQL Developer per questioni di sicurezza) tramite la piattaforma APEX (Application Express), ma che sconsiglio vivamente di utilizzare in quanto molto lento.
 
 Q: **Durante la registrazione al sito di Oracle mi vengono richiesti dati come l'occupazione e l'azienda, cosa inserisco?**<br/>
 A: Credo che sia lecito inserire come occupazione "Studente" e come azienda il nome dell'università.
