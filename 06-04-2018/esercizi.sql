@@ -29,3 +29,15 @@ ALTER TABLE anagrafica ADD CONSTRAINT anagrafica_pk PRIMARY KEY (cod) ENABLE;
 
 --  References Constraints for Table ANAGRAFICA
 ALTER TABLE anagrafica ADD CONSTRAINT anagrafica_fk FOREIGN KEY (cod) REFERENCES impiegato (cod) ENABLE;
+
+--Ex. 1.1. Create table ReportImpiegato
+
+-- create table con constraints
+CREATE TABLE reportimpiegato (
+cod NUMBER(4,0),
+report VARCHAR2(4000),
+
+CONSTRAINT reportimpiegato_pk PRIMARY KEY (cod),
+CONSTRAINT reportimpiegato_fk FOREIGN KEY (cod) REFERENCES impiegato (cod)
+
+);
