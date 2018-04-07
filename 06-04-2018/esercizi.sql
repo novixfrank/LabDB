@@ -1,43 +1,99 @@
---Preamble to solve Exercises
-
--- create table ANAGRAFICA
-CREATE TABLE anagrafica (
-cod NUMBER(4,0),
-datan DATE,
-sesso CHAR(1),
-luogon VARCHAR2(80),
-provn CHAR(2)
-) ;
-
--- insert into table ANAGRAFICA
-INSERT INTO anagrafica (cod,datan,sesso,luogon,provn) VALUES ('3', TO_DATE('19/02/1971','DD/MM/YYYY'),'M','Napoli','NA');
-INSERT INTO anagrafica (cod,datan,sesso,luogon,provn) VALUES ('4', TO_DATE ('04/06/1989','DD/MM/YYYY'),'F','Paesi Bassi','EE');
-INSERT INTO anagrafica (cod,datan,sesso,luogon,provn) VALUES ('2', TO_DATE ('05/08/1978','DD/MM/YYYY'),'M','Torre del Greco','NA');
-INSERT INTO anagrafica (cod,datan,sesso,luogon,provn) VALUES ('5', NULL,'M','Roma', NULL);
-INSERT INTO anagrafica (cod,datan,sesso,luogon,provn) VALUES ('6', TO_DATE ('08/01/1984','DD/MM/YYYY'),'F','Sorrento','NA');
-INSERT INTO anagrafica (cod,datan,sesso,luogon,provn) VALUES ('7', TO_DATE ('13/06/1980','DD/MM/YYYY'),'M', NULL, NULL);
-INSERT INTO anagrafica (cod,datan,sesso,luogon,provn) VALUES ('1', TO_DATE ('23/12/1973','DD/MM/YYYY'),'M','Napoli','NA');
-INSERT INTO anagrafica (cod,datan,sesso,luogon,provn) VALUES ('8', TO_DATE ('21/07/1988','DD/MM/YYYY'),'M','Torino','TO');
-INSERT INTO anagrafica (cod,datan,sesso,luogon,provn) VALUES ('9', TO_DATE ('16/09/1983','DD/MM/YYYY'),'M','Napoli','NA');
-INSERT INTO anagrafica (cod,datan,sesso,luogon,provn) VALUES ('10', NULL,'F', NULL, NULL);
-INSERT INTO anagrafica (cod,datan,sesso,luogon,provn) VALUES ('12', TO_DATE ('20/07/1989','DD/MM/YYYY'),'F','Agropoli','SA');
-
---  Constraints for Table ANAGRAFICA
-ALTER TABLE anagrafica ADD CONSTRAINT anagrafica_ckl CHECK (luogon IS NOT NULL OR provn IS NULL) ENABLE;
-ALTER TABLE anagrafica ADD CONSTRAINT anagrafica_cks CHECK (upper(sesso) in ('M', 'F')) ENABLE;
-ALTER TABLE anagrafica ADD CONSTRAINT anagrafica_pk PRIMARY KEY (cod) ENABLE;
-
---  References Constraints for Table ANAGRAFICA
-ALTER TABLE anagrafica ADD CONSTRAINT anagrafica_fk FOREIGN KEY (cod) REFERENCES impiegato (cod) ENABLE;
-
---Ex. 1.1. Create table ReportImpiegato
-
--- create table con constraints
+--Es. 1.1. Create table ReportImpiegato
 CREATE TABLE reportimpiegato (
-cod NUMBER(4,0),
-report VARCHAR2(4000),
-
-CONSTRAINT reportimpiegato_pk PRIMARY KEY (cod),
-CONSTRAINT reportimpiegato_fk FOREIGN KEY (cod) REFERENCES impiegato (cod)
-
+    cod NUMBER(4),
+    report VARCHAR2(4000),
+    CONSTRAINT reportimpiegato_pk PRIMARY KEY (cod),
+    CONSTRAINT reportimpiegato_fk FOREIGN KEY (cod) REFERENCES impiegato(cod)
 );
+
+-- Es. 1.2. Definizione della procedura
+CREATE OR REPLACE PROCEDURE crea_report (
+    quant OUT NUMBER
+) AS
+    testo VARCHAR2(4000) := 'Nome: :nome' || CHR(10) ||
+        'Cognome: :cognome' || CHR(10) ||
+        'Data di nascita: :data_n' || CHR(10) ||
+        'Luogo di nascita: :luogo_n' || CHR(10) ||
+        'Sesso: :sesso' || CHR(10) ||
+        'Data di assunzione: :data_a';
+    testo_composto VARCHAR2(4000) := NULL;
+    CURSOR imp IS
+        SELECT i.cod, i.nome, i.cognome, a.datan, a.luogon, a.sesso, a.provn
+        FROM impiegato i INNER JOIN anagrafica a ON i.cod = a.cod
+        ORDER BY i.cod;
+BEGIN
+    quant := 0;
+
+    FOR i IN imp LOOP
+        IF
+            (i.datan IS NOT NULL) AND
+            (i.luogon IS NOT NULL) AND
+            (i.sesso IS NOT NULL) AND
+            (i.provn IS NOT NULL)
+        THEN
+            testo_composto := testo;
+
+            testo_composto := REPLACE(testo_composto, ':nome', i.nome);
+            testo_composto := REPLACE(testo_composto, ':cognome', i.cognome);
+            testo_composto := REPLACE(testo_composto, ':data_n', i.datan);
+            testo_composto := REPLACE(testo_composto, ':luogo_n', i.luogon);
+            testo_composto := REPLACE(testo_composto, ':sesso', i.sesso);
+            testo_composto := REPLACE(testo_composto, ':data_a', i.data_assunto);
+
+            -- DBMS_OUTPUT.PUT_LINE(testo_composto);
+
+            BEGIN
+                INSERT INTO reportimpiegato(cod, report) VALUES(i.cod, testo_composto);
+            EXCEPTION
+                WHEN DUP_VAL_ON_INDEX THEN
+                    UPDATE reportimpiegato r SET r.report = testo_composto WHERE r.cod = i.cod;
+            END;
+
+            quant := quant + 1;
+        END IF;
+    END LOOP;
+END;
+
+-- Esecuzione (da essere eseguita da sola)
+DECLARE
+    q NUMBER;
+BEGIN
+    crea_report(q);
+    DBMS_OUTPUT.PUT_LINE(q);
+END;
+
+
+
+-- Es. 2. Effetto della procedura ricreato con MERGE
+MERGE INTO reportimpiegato r
+USING
+    (SELECT i.cod, i.nome, i.cognome, a.datan, a.luogon, a.sesso, a.provn
+    FROM impiegato i INNER JOIN anagrafica a ON i.cod = a.cod) i
+ON (r.cod = i.cod)
+WHEN MATCHED THEN
+    UPDATE SET r.report = ('Nome: ' || i.nome || CHR(10) ||
+        'Cognome: ' || i.cognome || CHR(10) ||
+        'Data di nascita: ' || i.datan || CHR(10) ||
+        'Luogo di nascita: ' || i.luogon || CHR(10) ||
+        'Sesso: ' || i.sesso || CHR(10) ||
+        'Data di assunzione: ' || i.provn)
+    WHERE
+        (i.datan IS NOT NULL) AND
+        (i.luogon IS NOT NULL) AND
+        (i.sesso IS NOT NULL) AND
+        (i.provn IS NOT NULL)
+WHEN NOT MATCHED THEN
+    INSERT (cod, report)
+    VALUES (i.cod,
+        ('Nome: ' || i.nome || CHR(10) ||
+        'Cognome: ' || i.cognome || CHR(10) ||
+        'Data di nascita: ' || i.datan || CHR(10) ||
+        'Luogo di nascita: ' || i.luogon || CHR(10) ||
+        'Sesso: ' || i.sesso || CHR(10) ||
+        'Data di assunzione: ' || i.provn)
+    )
+    WHERE
+        (i.datan IS NOT NULL) AND
+        (i.luogon IS NOT NULL) AND
+        (i.sesso IS NOT NULL) AND
+        (i.provn IS NOT NULL);
