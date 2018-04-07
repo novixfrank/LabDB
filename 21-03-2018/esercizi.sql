@@ -22,6 +22,8 @@ WHERE LEVEL > 1
 CONNECT BY i.capo = PRIOR i.cod
 START WITH i.cod IN (SELECT cod FROM impiegato WHERE cognome = 'Bianchi');
 
+
+
 -- 2. Stampa a video degli impiegati con codice compreso 7 e 10:
 DECLARE
     cognomi VARCHAR2(500) := NULL;
