@@ -13,7 +13,7 @@ CREATE OR REPLACE PROCEDURE crea_report (
     testo VARCHAR2(4000) := 'Nome: :nome' || CHR(10) ||
         'Cognome: :cognome' || CHR(10) ||
         'Data di nascita: :data_n' || CHR(10) ||
-        'Luogo di nascita: :luogo_n' || CHR(10) ||
+        'Luogo di nascita: :luogo_n (:prov_n)' || CHR(10) ||
         'Sesso: :sesso' || CHR(10) ||
         'Data di assunzione: :data_a';
     testo_composto VARCHAR2(4000) := NULL;
@@ -37,6 +37,7 @@ BEGIN
             testo_composto := REPLACE(testo_composto, ':cognome', i.cognome);
             testo_composto := REPLACE(testo_composto, ':data_n', i.datan);
             testo_composto := REPLACE(testo_composto, ':luogo_n', i.luogon);
+            testo_composto := REPLACE(testo_composto, ':prov_n', i.provn);
             testo_composto := REPLACE(testo_composto, ':sesso', i.sesso);
             testo_composto := REPLACE(testo_composto, ':data_a', i.data_assunto);
 
