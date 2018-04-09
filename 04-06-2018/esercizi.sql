@@ -1,4 +1,4 @@
---Es. 1.1. Create table ReportImpiegato
+-- Es. 1.1. Create table ReportImpiegato
 CREATE TABLE reportimpiegato (
     cod NUMBER(4),
     report VARCHAR2(4000),
@@ -18,7 +18,7 @@ CREATE OR REPLACE PROCEDURE crea_report (
         'Data di assunzione: :data_a';
     testo_composto VARCHAR2(4000) := NULL;
     CURSOR imp IS
-        SELECT i.cod, i.nome, i.cognome, a.datan, a.luogon, a.sesso, a.provn
+        SELECT i.cod, i.nome, i.cognome, i.data_assunto, a.datan, a.luogon, a.sesso, a.provn
         FROM impiegato i INNER JOIN anagrafica a ON i.cod = a.cod
         ORDER BY i.cod;
 BEGIN
@@ -50,6 +50,10 @@ BEGIN
             END;
 
             quant := quant + 1;
+            /* imp%ROWCOUNT non può essere utilizzato perchè conta tutte i record presenti anagrafica 
+             * e non solo quelli interessati dall'inserimento o dall'aggiornamento.
+             *
+             * Per la versione utilizzante il %ROWCOUNT, guardare il file 'alternativa.sql'. */
         END IF;
     END LOOP;
 END;
@@ -67,7 +71,7 @@ END;
 -- Es. 2. Effetto della procedura ricreato con MERGE
 MERGE INTO reportimpiegato r
 USING
-    (SELECT i.cod, i.nome, i.cognome, a.datan, a.luogon, a.sesso, a.provn
+    (SELECT i.cod, i.nome, i.cognome, i.data_assunto, a.datan, a.luogon, a.sesso, a.provn
     FROM impiegato i INNER JOIN anagrafica a ON i.cod = a.cod) i
 ON (r.cod = i.cod)
 WHEN MATCHED THEN
@@ -76,7 +80,7 @@ WHEN MATCHED THEN
         'Data di nascita: ' || i.datan || CHR(10) ||
         'Luogo di nascita: ' || i.luogon || CHR(10) ||
         'Sesso: ' || i.sesso || CHR(10) ||
-        'Data di assunzione: ' || i.provn)
+        'Data di assunzione: ' || i.data_assunto)
     WHERE
         (i.datan IS NOT NULL) AND
         (i.luogon IS NOT NULL) AND
@@ -90,7 +94,7 @@ WHEN NOT MATCHED THEN
         'Data di nascita: ' || i.datan || CHR(10) ||
         'Luogo di nascita: ' || i.luogon || CHR(10) ||
         'Sesso: ' || i.sesso || CHR(10) ||
-        'Data di assunzione: ' || i.provn)
+        'Data di assunzione: ' || i.data_assunto)
     )
     WHERE
         (i.datan IS NOT NULL) AND
