@@ -79,7 +79,7 @@ WHEN MATCHED THEN
     UPDATE SET r.report = ('Nome: ' || i.nome || CHR(10) ||
         'Cognome: ' || i.cognome || CHR(10) ||
         'Data di nascita: ' || i.datan || CHR(10) ||
-        'Luogo di nascita: ' || i.luogon || CHR(10) ||
+        'Luogo di nascita: ' || i.luogon || '(' || i.provn || ')' || CHR(10) ||
         'Sesso: ' || i.sesso || CHR(10) ||
         'Data di assunzione: ' || i.data_assunto)
     WHERE
@@ -93,7 +93,7 @@ WHEN NOT MATCHED THEN
         ('Nome: ' || i.nome || CHR(10) ||
         'Cognome: ' || i.cognome || CHR(10) ||
         'Data di nascita: ' || i.datan || CHR(10) ||
-        'Luogo di nascita: ' || i.luogon || CHR(10) ||
+        'Luogo di nascita: ' || i.luogon || '(' || i.provn || ')' || CHR(10) ||
         'Sesso: ' || i.sesso || CHR(10) ||
         'Data di assunzione: ' || i.data_assunto)
     )
