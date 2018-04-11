@@ -145,6 +145,9 @@ A: Assolutamente no.
 Q: **E' possibile visualizzare il numero di riga nel pannello di scrittura delle query?**<br/>
 A: Sì, vi sono due metodi: 1) Cliccare col tasto destro nell'area a sinistra dell'area di testo e cliccare sull'opzione **Attiva/disattiva numero di riga**; 2) Dal menù superiore, **Strumenti** > **Preferenze...** > **Editor di codice** > **Margine interno riga**, poi abilitare **Mostra numeri di riga**.
 
+Q: **E' possibile avere più fogli di lavoro dove eseguire le query?**<br/>
+A: Sì, basta cliccare sulla freccia presente alla destra dell'icona mostrata (![Aggiungere un foglio di lavoro](https://i.imgur.com/77o5PPO.jpg)), da qui vi si aprirà un menù mostrante la lista delle connessioni create: cliccare sulla corrente ed il gioco è fatto. La cosa può tornare molto utile per eseguire query dopo aver definito funzioni senza dover sclerare commentando o copiando-incollando altrove parti di codice.
+
 Q: **Perchè dopo aver eseguito operazioni sulle tabelle (eliminazione, rinominazione), continuo a vederle come se nulla fosse accaduto?**<br/>
 A: SQL Developer spesso dimentica di aggiornare l'interfaccia grafica, per far sì che l'interfaccia si aggiorni, basta cliccare sull'icona dell'aggiornamento (![Aggiornamento](https://i.imgur.com/o5wjezR.jpg)), certe volte è necessario nascondere gli oggetti che si stanno visualizzando, premere il tasto di aggiornamento ed esplodere di nuovo gli oggetti.
 
