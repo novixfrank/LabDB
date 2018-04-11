@@ -37,6 +37,7 @@ BEGIN
             WHEN i.sesso IS NOT NULL THEN
                 testo_composto := testo_composto || 'Sesso: ' || i.sesso || CHR(10);
         END CASE;
+        -- Non è possibile accedere alla funzione NVL2() all'interno di un blocco PL/SQL in quanto è definita solo per interrogazioni SQL puro.
         
         -- Ultimo dato assoluto:
         testo_composto := testo_composto || 'Data di assunzione: ' || TO_CHAR(i.data_assunto, 'DD/MM/YYYY');
