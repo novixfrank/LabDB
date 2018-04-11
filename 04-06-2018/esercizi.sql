@@ -8,7 +8,7 @@ CREATE TABLE reportimpiegato (
 
 -- Es. 1.2. Definizione della procedura:
 CREATE OR REPLACE PROCEDURE crea_report (
-    quant OUT NUMBER
+    quant OUT NUMBER -- Stando alla traccia, il valore dovrebbe essere unico!
 ) AS
     testo_composto VARCHAR2(4000) := NULL;
     CURSOR imp IS
@@ -23,22 +23,22 @@ BEGIN
         testo_composto := testo_composto || 'Cognome: ' || i.cognome || CHR(10);
 
         -- Dati non neccessariamente inseribili:
-        CASE 
+        CASE
             WHEN i.datan IS NOT NULL THEN
                 testo_composto := testo_composto || 'Data di nascita: ' || TO_CHAR(i.datan, 'DD/MM/YYYY') || CHR(10);
             WHEN i.luogon IS NOT NULL THEN
                 testo_composto := testo_composto || 'Luogo di nascita: ' || i.luogon;
-                
+
                 IF i.provn IS NOT NULL THEN
                      testo_composto := testo_composto || ' (' || i.provn || ')';
                 END IF;
-                
+
                 testo_composto := testo_composto || CHR(10);
             WHEN i.sesso IS NOT NULL THEN
                 testo_composto := testo_composto || 'Sesso: ' || i.sesso || CHR(10);
         END CASE;
         -- Non è possibile accedere alla funzione NVL2() all'interno di un blocco PL/SQL in quanto è definita solo per interrogazioni SQL puro.
-        
+
         -- Ultimo dato assoluto:
         testo_composto := testo_composto || 'Data di assunzione: ' || TO_CHAR(i.data_assunto, 'DD/MM/YYYY');
 
