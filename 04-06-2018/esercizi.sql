@@ -1,3 +1,5 @@
+-- Esegui il codice del file 'anagrafica.sql' per la tabella anagrafica;
+
 -- Es. 1.1. Creazione della tabella reportimpiegato;
 CREATE TABLE reportimpiegato (
     cod NUMBER(4),
