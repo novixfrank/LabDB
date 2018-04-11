@@ -1,4 +1,4 @@
--- Guarda il file 'test.sql' per le tabelle di verifica;
+-- Esegui il codice del file 'test.sql' per le tabelle di verifica;
 
 -- Es. 1. Definizione della funzione:
 CREATE OR REPLACE FUNCTION cmassima(
