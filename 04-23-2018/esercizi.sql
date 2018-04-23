@@ -179,3 +179,10 @@ INSERT INTO pos_gp(numero_gp, vettura, posizione) VALUES (3, 31, 17);
 INSERT INTO pos_gp(numero_gp, vettura, posizione) VALUES (3, 10, 18);
 INSERT INTO pos_gp(numero_gp, vettura, posizione) VALUES (3, 28, 19);
 INSERT INTO pos_gp(numero_gp, vettura, posizione) VALUES (3, 16, 20);
+
+
+
+-- 2.1. Aggiunta della colonna 'tempo' in 'pos_gp':
+ALTER TABLE pos_gp ADD (
+    tempo TIMESTAMP(3) CONSTRAINT pos_gp_tempo_uq UNIQUE
+);
