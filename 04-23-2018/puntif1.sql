@@ -1,16 +1,18 @@
 --------------------------------------------------------
---  File creato - giovedì-aprile-16-2015   
+--  File creato - giovedì-aprile-16-2015
 --------------------------------------------------------
 --------------------------------------------------------
 --  DDL for Table PUNTIF1
 --------------------------------------------------------
 
-  CREATE TABLE "PUNTIF1" 
-   (	"POS" NUMBER(2,0), 
+--instruzioni da eseguire separatamente
+
+  CREATE TABLE "PUNTIF1"
+   (	"POS" NUMBER(2,0),
 	"PUNTEGGIO" NUMBER(2,0) DEFAULT 0
-   ) 
-/   
-   
+   )
+
+
    REM INSERTING into PUNTIF1
 SET DEFINE OFF;
 Insert into PUNTIF1 (POS,PUNTEGGIO) values ('1','25');
