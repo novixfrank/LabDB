@@ -11,7 +11,7 @@
 	CREATE OR REPLACE VIEW Pos_GP AS
 	SELECT * FROM Pos_GP_Base;
 
---Soluzione 
+--Soluzione
 	CREATE OR REPLACE TRIGGER PosGP_InstIns
 	/* per l'inserimento di dati in Pos_GP, verificando tempo
 	* e posizione (ed eventualmente aggiornando i punti) */
