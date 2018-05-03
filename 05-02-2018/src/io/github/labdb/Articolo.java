@@ -1,7 +1,7 @@
 package io.github.labdb;
 
 class Articolo {
-    protected int id;
+    private int id;
 
     public Articolo(int id) {
         this.id = id;
