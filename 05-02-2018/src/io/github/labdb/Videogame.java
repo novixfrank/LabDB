@@ -17,7 +17,7 @@ class Videogame extends Articolo {
     }
 
     public String toString() {
-        return "Videogame: Codice: " + id + "; Titolo: " + titolo + ";";
+        return "Videogame: Codice: " + getID() + "; Titolo: " + titolo + ";";
     }
 
 }
