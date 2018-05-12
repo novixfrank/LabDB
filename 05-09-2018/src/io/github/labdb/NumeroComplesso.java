@@ -26,7 +26,7 @@ public class NumeroComplesso extends Number {
         return real + " + " + imaginary + " * i";
     }
 
-    public double getModulo() {
+    public double modulo() {
         double x = 0.0d;
         x = (Math.pow(real, 2)) + (Math.pow(imaginary, 2));
 
