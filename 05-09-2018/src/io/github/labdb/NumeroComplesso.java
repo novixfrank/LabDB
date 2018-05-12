@@ -32,7 +32,7 @@ public class NumeroComplesso extends Number {
     }
 
     public String coordinatePolari() {
-        return "(" + getModulo() + "," + args() + ")";
+        return "(" + getModulo() + ", " + args() + ")";
     }
 
     public int intValue() {

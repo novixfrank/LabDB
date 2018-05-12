@@ -9,7 +9,7 @@ public class Applicazione {
     			z = new NumeroComplesso(Double.parseDouble(args[0]), Double.parseDouble(args[1]));
     		}
     		catch (NumberFormatException e) {
-    			System.out.println("Errore: formato numerico non valido.\nErrore originario:");
+    			System.out.println("Errore: formato numerico non valido.\n\n");
     			e.printStackTrace();
     		}
             
