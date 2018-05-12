@@ -27,6 +27,14 @@ public class NumeroComplesso extends Number {
 
         return Math.sqrt(x);
     }
+    
+    public double args() {
+        return Math.atan2(imaginary, real);
+    }
+
+    public string CoordinatePolari() {
+        return "(" + getModulo + "," + args() + ")";
+    }
 
     public int intValue() {
         return (int) getModulo();
@@ -44,11 +52,4 @@ public class NumeroComplesso extends Number {
         return (double) getModulo();
     }
 
-    public double args() {
-        return Math.atan2(imaginary, real);
-    }
-
-    public string polarCoordinate() {
-        return "(" + getModulo + "," + args() + ")";
-    }
 }

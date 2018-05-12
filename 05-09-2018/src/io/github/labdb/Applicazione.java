@@ -1,3 +1,5 @@
+package io.github.labd;
+
 public class Applicazione {
     public static void main(String[] args) {
         try {
@@ -9,7 +11,7 @@ public class Applicazione {
             }
         }
         catch (NumberFormatException) {
-            //scrivi "numero scritto male" e chiudi programma
+            System.out.println("Errore: formato numero non valido.");
         }
     }
 }
