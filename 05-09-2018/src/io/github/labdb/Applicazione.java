@@ -8,8 +8,8 @@ public class Applicazione {
                 
                 //stampare il numero complesso, il modulo, le coordinate polari
                 System.out.println("\n Numero complesso: " + z.getNumero());
-                System.out.println("\n Modulo numero: " + z.getModulo());
-                System.out.println("\n Coordinare polari: " + z.getCoordinatePolari());
+                System.out.println("\n Modulo numero: " + z.modulo());
+                System.out.println("\n Coordinare polari: " + z.coordinatePolari());
             }
             else {
                 System.out.println("Errore: numero di argomenti non valido.");
