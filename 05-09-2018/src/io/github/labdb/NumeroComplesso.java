@@ -37,7 +37,7 @@ public class NumeroComplesso extends Number {
         return Math.atan2(imaginary, real);
     }
 
-    public String CoordinatePolari() {
+    public String getCoordinatePolari() {
         return "(" + getModulo() + "," + args() + ")";
     }
 
