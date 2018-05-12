@@ -1,4 +1,4 @@
-package io.github.labd;
+package io.github.labdb;
 
 import java.lang.Math;
 
@@ -12,12 +12,12 @@ public class NumeroComplesso extends Number {
         imaginary = ip;
     }
 
-    public setNumero(double rp, double ip) {
+    public void setNumero(double rp, double ip) {
         real = rp;
         imaginary = ip;
     }
 
-    public string getNumero() {
+    public String getNumero() {
         return real + " + " + imaginary + " * i";
     }
 
@@ -27,13 +27,13 @@ public class NumeroComplesso extends Number {
 
         return Math.sqrt(x);
     }
-    
+
     public double args() {
         return Math.atan2(imaginary, real);
     }
 
-    public string CoordinatePolari() {
-        return "(" + getModulo + "," + args() + ")";
+    public String CoordinatePolari() {
+        return "(" + getModulo() + "," + args() + ")";
     }
 
     public int intValue() {
