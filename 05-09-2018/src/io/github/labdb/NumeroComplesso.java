@@ -1,20 +1,14 @@
 package io.github.labdb;
 
 import java.lang.Math;
-import java.lang.Double;
 
 public class NumeroComplesso extends Number {
-
     private double real = 0.0d;
     private double imaginary = 0.0d;
 
     public NumeroComplesso(double rp, double ip) {
         real = rp;
         imaginary = ip;
-    }
-    
-    public NumeroComplesso(String rp, String ip) {
-        this(Double.parseDouble(rp), Double.parseDouble(ip))
     }
 
     public void setNumero(double rp, double ip) {
@@ -26,7 +20,7 @@ public class NumeroComplesso extends Number {
         return real + " + " + imaginary + " * i";
     }
 
-    public double modulo() {
+    public double getModulo() {
         double x = 0.0d;
         x = (Math.pow(real, 2)) + (Math.pow(imaginary, 2));
 
