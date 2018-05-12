@@ -1,6 +1,7 @@
 package io.github.labdb;
 
 import java.lang.Math;
+import java.lang.Double;
 
 public class NumeroComplesso extends Number {
 
@@ -10,6 +11,10 @@ public class NumeroComplesso extends Number {
     public NumeroComplesso(double rp, double ip) {
         real = rp;
         imaginary = ip;
+    }
+    
+    public NumeroComplesso(String rp, String ip) {
+        this(Double.parseDouble(rp), Double.parseDouble(ip))
     }
 
     public void setNumero(double rp, double ip) {
