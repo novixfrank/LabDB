@@ -2,6 +2,7 @@ package io.github.labdb;
 
 import java.lang.Math;
 
+@SuppressWarnings("serial")
 public class NumeroComplesso extends Number {
     private double real = 0.0d;
     private double imaginary = 0.0d;
