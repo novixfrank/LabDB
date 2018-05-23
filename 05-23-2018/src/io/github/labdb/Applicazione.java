@@ -7,7 +7,7 @@ import java.sql.Connection;
 
 public class Applicazione {
 	private static Connection db = null;
-	private static Utente u = null;
+	//private static Utente u = null;
 	private static BufferedReader in = null;
 	
 	public static void main(String[] args) {
@@ -32,8 +32,8 @@ public class Applicazione {
 				e.printStackTrace();
 			}
 			
-			if (s.toLowerCase().equals("s")) {
-				Posizione.inserisci(in);
+			if (s.toLowerCase() == "s") {
+				
 			}
 			else {
 				break;
@@ -49,7 +49,7 @@ public class Applicazione {
 	}
 	
 	private static void accedi() {
-		try {
+		/*try {
 			u = new Utente(in);
 		}
 		catch (IOException e) {
@@ -62,6 +62,6 @@ public class Applicazione {
 		}
 		else {
 			System.out.println("\tConnessione stabilita con successo!");
-		}
+		}*/
 	}
 }

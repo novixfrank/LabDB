@@ -1,3 +1,2 @@
-javac -d ./bin ./src/io/github/labdb/*.java
-
-java -cp ./bin io.github.labdb.Applicazione
+javac ./src/io/github/labdb/*.java -d ./bin
+java -cp ./ojdbc6.jar;./bin io.github.labdb.Applicazione
